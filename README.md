@@ -1,111 +1,102 @@
-2D Verlet Physics Simulator
+# 2D Verlet Physics Simulator
 
-A 2-month project — a 2D particle-based physics simulator implemented with Verlet Integration to learn physics engines and improve C++ skills. Renders with Dear ImGui + DirectX11 and includes a full ImGui debug/control menu.
+**A 2-month project: a 2D particle-based physics simulator implemented with Verlet Integration, rendered with Dear ImGui + DirectX11.**
 
-Description
+This project was built to learn physics engines and level up C++ skills. It features a full ImGui control panel (open with `Insert`) for live tuning, a spatial grid for efficient collision detection, and grid partitioning to enable multithreading.
 
-This simulator uses Verlet integration for stable constraint solving, supports multiple spawnable shapes, and provides a live ImGui panel (open with Insert) for tuning physics and visuals. Collisions are detected using a spatial grid and the grid is partitioned to enable multithreading.
+---
 
-Features
+## 🎯 Features
 
-Verlet Integration for particle constraints and stability.
+* **Verlet Integration** for stable constraint solving and particle-based simulation.
+* **Real-time ImGui control panel** (open with `Insert`) with many options for gravity, elasticity, shapes, and debug visuals.
+* **Spatial grid collision detection** — collisions checked only when 2+ balls share the same grid cell.
+* **Grid partitioning** to split work for multithreading (collision/resolution).
+* **Resizable window** — particles adapt to new borders.
+* **High performance** — supports roughly **~10k particles** at **~60 FPS** on capable hardware.
+* **Interactive particle manipulation** — click & drag the nearest particle.
 
-Spatial grid for collision detection (only checks collisions when 2+ balls share the same grid cell).
+---
 
-Grid partitioning for multithreaded collision/resolution work.
+## ⌨️ Controls
 
-Live ImGui menu for runtime tuning and debugging.
+* **`Insert`** — Toggle ImGui menu
+* **`Space`** — Clear all particles
+* **`F1`** — Freeze / stop all particles
+* **Left mouse (hold)** — Move the nearest particle to the mouse and drag it
+* Resize window — particles adapt to borders
 
-Window-resizable — particles adapt to new window borders.
+---
 
-Supports around ~10k particles at ~60 FPS on suitable hardware.
+## 🧩 ImGui Menu (items shown in screenshot)
 
-Controls
+**Top info**
 
-Insert — Toggle ImGui menu
+* `FPS: <value>`
+* `Particles: <value>`
 
-Space — Clear all particles
+**GRAVITY**
 
-F1 — Freeze / stop all particles
+* `Gravity X` (slider)
+* `Gravity Y` (slider)
 
-Left mouse (hold) — Move the nearest particle to the mouse and drag it
+**ELASTICITY**
 
-Resize window — particles adapt to borders
+* `Elasticity` (slider)
 
-ImGui Menu (items shown in the screenshot)
+**General toggles**
 
-Top info
+* `Turbo Mode` (checkbox)
+* `Show Grid` (checkbox)
+* `Show Ball Grid Index` (checkbox)
 
-FPS: <value>
+**FIGURES** (spawnable)
 
-Particles: <value>
+* `Square` (checkbox)
+* `Triangle` (checkbox)
+* `Circle` (checkbox)
+* `Ball` (checkbox)
+* `Static Ball` (checkbox)
+* `Stick` (checkbox)
+* `Chain` (checkbox)
 
-GRAVITY
+**Shape / object parameters (sliders)**
 
-Gravity X (slider)
+* `Square size`
+* `Triangle size`
+* `Circle size`
+* `Circle segments`
+* `Ball size`
+* `Static Ball size`
+* `Chain distance`
 
-Gravity Y (slider)
+---
 
-ELASTICITY
+## ⚡ Performance
 
-Elasticity (slider)
+* Approx **10,000 particles** at **~60 FPS** on suitable hardware (CPU/GPU dependent).
+* Spatial grid drastically reduces pairwise collision checks.
+* Grid partitioning enables parallel processing of collision and resolution steps.
 
-General toggles
+---
 
-Turbo Mode (checkbox)
+## ⚠️ Known Issues & Notes
 
-Show Grid (checkbox)
+* Occasionally particles may **go crazy** (sudden very high velocities). **Press `Space`** to clear all particles and resolve the issue.
+* **Grid cell size = 5.** If you spawn balls larger than size 5, collision detection behaves poorly and instability becomes more frequent.
 
-Show Ball Grid Index (checkbox)
+---
 
-FIGURES (spawnable)
+## ▶️ Demo / Showcase
 
-Square (checkbox)
+**YouTube (placeholder):** `https://youtu.be/bxhSQGvEt70`
 
-Triangle (checkbox)
+---
 
-Circle (checkbox)
+## 🛠️ Build / Run (suggested)
 
-Ball (checkbox)
+1. Build with a Windows C++ toolchain (Visual Studio recommended for DirectX11).
+2. Link Dear ImGui with the DirectX11 backend.
+3. Run the executable and press `Insert` to open the ImGui panel.
 
-Static Ball (checkbox)
 
-Stick (checkbox)
-
-Chain (checkbox)
-
-Shape / object parameters (sliders)
-
-Square size
-
-Triangle size
-
-Circle size
-
-Circle segments
-
-Ball size
-
-Static Ball size
-
-Chain distance
-
-Performance
-
-Approx 10,000 particles at ~60 FPS on capable hardware (depends on CPU/GPU).
-
-Collision checks are limited by the spatial grid which reduces pairwise checks dramatically.
-
-Grid partitioning allows parallel processing of collision/resolution.
-
-Known Issues & Notes
-
-Occasionally particles may “go crazy” (very high velocities). Press Space to clear and resolve the issue.
-
-Grid cell size = 5. Spawning balls larger than size 5 causes poor collision behavior and increases the chance of instability.
-
-The YouTube showcase link below is a placeholder — replace with your uploaded video URL.
-
-Demo / Showcase
-
-YouTube (placeholder): https://youtu.be/EXAMPLE_SHOWCASE
