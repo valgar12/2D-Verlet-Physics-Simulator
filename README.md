@@ -89,7 +89,7 @@ This project was built to learn physics engines and level up C++ skills. It feat
 
 ## ▶️ Demo / Showcase
 
-**YouTube (placeholder):** `https://youtu.be/bxhSQGvEt70`
+**YouTube:** https://youtu.be/bxhSQGvEt70
 
 ---
 
